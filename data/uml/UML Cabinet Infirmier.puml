@@ -1,0 +1,112 @@
+@startuml Cabinet_Infirmier
+
+package "http://www univ-grenoble-alpes fr/l3miage/medical" {
+
+    class Cabinet {
+        - nom : string
+        - adresse : Adresse
+        - infirmiers : ListeInfirmier
+        - patients : ListePatient
+    }
+
+    class Infirmier {
+        - id : string
+        - nom : Dénomination
+        - prenom : Dénomination
+        - photo : string
+    }
+
+    class Patient {
+        - nom : Dénomination
+        - prenom : Dénomination
+        - sexe : Sexe
+        - naissance : date
+        - numeroSS : NumeroSecuriteSociale
+        - adresse : Adresse
+        - visites : ListeVisite
+    }
+
+    class Adresse {
+        - etage : Etage
+        - numero : Numérotation
+        - rue : string
+        - codePostal : CodePostal
+        - ville : Dénomination
+    }
+
+    class Visite {
+        - date : Date
+        - intervenant : string {ref à Infirmier.id}
+        - actes : ListeActe
+    }
+
+    class Acte {
+        - id : string {ref à NGAP}
+    }
+
+    ' restriction
+    class NumeroSecuriteSociale {
+        + pattern: [1-2][0-9]{12}[0-9]{2}
+    }
+
+    class CodePostal {
+        + pattern: [0-9]{5}
+    }
+    
+    class Etage {
+            + pattern: [0-9]{1,2}
+        }
+        
+    class Numérotation {
+                + pattern: [0-9]{3}
+            }
+    class Dénomination {
+                + pattern: [A-Z][a-z]+
+            }
+
+    enum Sexe <<enumeration>> {
+        M
+        F
+    }
+    
+    rectangle String {
+    }
+    
+    rectangle Int {
+    }
+
+    ' Relations
+    Cabinet "1" *-- "1" Adresse : "adresse"
+    Cabinet "1" *-- "0..*" Infirmier : "infirmiers"
+    Cabinet "1" *-- "0..*" Patient : "patients"
+    Patient "1" *-- "1" Adresse : "adresse"
+    Patient "1" *-- "1" NumeroSecuriteSociale : "numeroSS"
+    Patient "1" *-- "0..*" Visite : "visites"
+    Patient "1" *-- "1" Sexe : "sexe"
+    Visite "1" *-- "1..*" Acte : "actes"
+    Visite "0..*" *-- "1" Infirmier : "intervenant"
+    Adresse "1" *-- "1" CodePostal : "codePostal"
+    Etage --o Int
+    Numérotation --o Int
+    Dénomination --o String
+
+    note right of Acte
+        Référence aux codes NGAP
+    end note
+
+    note bottom of Visite
+        L'intervenant doit correspondre
+        à un ID d'infirmier existant
+    end note
+
+    note top of Cabinet
+        <<racine>> cabinet 
+    end note
+    
+    note top of Patient
+            <! Homme, né en Aout 98 en France, à Marseille (n° 55 en bouches du rhone) 458e naissance --> 
+    end note
+
+}
+
+@enduml

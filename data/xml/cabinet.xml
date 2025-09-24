@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cabinet xmlns="http://www.univ-grenoble-alpes.fr/l3miage/medical">
+
+    <nom>Cabinet Soins Grenoble</nom>
+    <adresse>
+        <etage>1</etage>
+        <numero>25</numero>
+        <rue>Rue des Martyrs</rue>
+        <codePostal>38000</codePostal>
+        <ville>Grenoble</ville>
+    </adresse>
+
+    <infirmiers>
+        <id>I1</id>
+        <nom>Dupont</nom>
+        <prenom>Claire</prenom>
+        <photo>dupont.jpg</photo>
+    </infirmiers>
+    <infirmiers>
+        <id>I2</id>
+        <nom>Martin</nom>
+        <prenom>Paul</prenom>
+        <photo>martin.jpg</photo>
+    </infirmiers>
+
+    <patients>
+        <nom>Orouge</nom>
+        <prenom>Elvire</prenom>
+        <sexe>F</sexe>
+        <naissance>1982-03-08</naissance>
+        <numeroSS>282035223452198</numeroSS>
+        <adresse>
+            <etage>0</etage>
+            <numero>15</numero>
+            <rue>Rond-Point de la Croix de Vie</rue>
+            <codePostal>38700</codePostal>
+            <ville>Latronche</ville>
+        </adresse>
+        <visites>
+            <date>2015-12-08</date>
+            <intervenant>I1</intervenant>
+            <actes id="200"/>
+        </visites>
+    </patients>
+
+    <patients>
+        <nom>Pien</nom>
+        <prenom>Oscare</prenom>
+        <sexe>M</sexe>
+        <naissance>1975-03-25</naissance>
+        <numeroSS>175036523692123</numeroSS>
+        <adresse>
+            <etage>2</etage>
+            <numero>12</numero>
+            <rue>Rue Casimir Brenier</rue>
+            <codePostal>38000</codePostal>
+            <ville>Grenoble</ville>
+        </adresse>
+        <visites>
+            <date>2015-12-08</date>
+            <intervenant>I2</intervenant>
+            <actes id="101"/>
+            <actes id="104"/>
+        </visites>
+    </patients>
+
+</cabinet>
