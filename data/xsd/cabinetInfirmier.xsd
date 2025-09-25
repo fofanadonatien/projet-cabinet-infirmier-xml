@@ -9,6 +9,12 @@
     <xs:element name="cabinet" type="ci:Cabinet"/>
 
     <!-- Types complexes -->
+    <!-- un cabinet a nom 
+         une adresse
+         contients des infirmier 
+         et un patient.
+    -->
+    
     <xs:complexType name="Cabinet">
         <xs:sequence>
             <xs:element name="nom" type="xs:string"/>
