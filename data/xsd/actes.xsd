@@ -1,49 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/actes"
-           xmlns="http://www.univ-grenoble-alpes.fr/l3miage/actes"
+           xmlns:ng="http://www.univ-grenoble-alpes.fr/l3miage/actes"
            elementFormDefault="qualified">
 
     <!-- Élément racine -->
-    <xs:element name="ngap">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="types">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="type" maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute name="id" type="xs:string" use="required"/>
-                                        </xs:extension>
-                                    </xs:simpleContent>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+    <element name="ngap" type="ng:NGAP"/>
 
-                <xs:element name="actes">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="acte" maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute name="id" type="xs:string" use="required"/>
-                                            <xs:attribute name="type" type="xs:string" use="required"/>
-                                            <xs:attribute name="clé" type="xs:string" use="required"/>
-                                            <xs:attribute name="coef" type="xs:decimal" use="required"/>
-                                        </xs:extension>
-                                    </xs:simpleContent>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <!-- NGAP -->
+    <complexType name="NGAP">
+        <sequence>
+            <element name="types" type="ng:Types"/>
+            <element name="actes" type="ng:Actes"/>
+        </sequence>
+    </complexType>
 
-</xs:schema>
+    <!-- Liste des types -->
+    <complexType name="Types">
+        <sequence>
+            <element name="type" type="ng:Type" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    
+    <complexType name="Type" mixed="true">
+        <attribute name="id" type="ng:typed" use="required"/>
+    </complexType>
+
+    <simpleType name="typed">
+        <restriction base="string">
+            <enumeration value="pi"/>
+            <enumeration value="pc"/>
+            <enumeration value="pl"/>
+            <enumeration value="sd"/>
+        </restriction>
+    </simpleType>
+
+    <!-- Liste des actes -->
+    <complexType name="Actes">
+        <sequence>
+            <element name="acte" type="ng:Acte" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <!-- Un acte -->
+    <complexType name="Acte" mixed="true">
+        <attribute name="id" type="integer" use="required"/>
+        <attribute name="type" type="ng:typed" use="required"/> <!-- référence à l'id du type -->
+        <attribute name="clé" use="required">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="AMI"/>
+                    <enumeration value="DI"/>
+                    <enumeration value="AIS"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="coef" type="decimal" use="required"/>
+    </complexType>
+
+</schema>
