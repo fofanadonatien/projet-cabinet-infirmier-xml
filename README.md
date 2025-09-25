@@ -23,13 +23,14 @@ L’objectif est de construire progressivement une application capable de :
   * `actes.xsd` (schéma des actes NGAP – version à revoir pour plus de cohérence).
 * Début de validation des fichiers XML ↔ XSD.
 * Organisation de l’arborescence du projet (`data/xml`, `data/xsd`).
+* Vérifier la **cohérence du schéma `actes.xsd`** avec l’exemple `ngap.xml` fourni par le professeur.
 
 
 ---
 
 ## 🚧 En cours
 
-* Vérifier la **cohérence du schéma `actes.xsd`** avec l’exemple `ngap.xml` fourni par le professeur.
+
   ⚠️ Certains choix de types et contraintes sont encore à ajuster (ex. attributs `coef`, `clé`, références croisées `id`).
 * Compléter `cabinet.xml` avec les patients demandés dans l’énoncé (Orouge Elvire, Pien Oscare, Kapoëtla Xavier).
 * Vérification stricte des numéros de sécurité sociale (regex et cohérence avec la date de naissance).
@@ -86,8 +87,8 @@ L’objectif est de construire progressivement une application capable de :
 
 ## 👥 Travail collaboratif
 
-* Utiliser des **branches** pour chaque fonctionnalité (ex. `feature-xslt`, `fix-actes-xsd`).
-* Créer une **Pull Request** avant de fusionner sur `main`.
+* Utiliser des **branches** pour chaque fonctionnalité (ex. `feature-xslt`, `fix-actes-xsd`). j'ai pas fait
+* Créer une **Pull Request** avant de fusionner sur `main` ou `master`
 * Lister les tâches sous forme d’**Issues GitHub** pour suivre l’avancée.
 
 ---
