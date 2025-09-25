@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schema version="1.0"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.w3.org/2001/XMLSchema"
            xmlns:ci="http://www.univ-grenoble-alpes.fr/l3miage/medical"
            targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
            elementFormDefault="qualified">
 
+    
     <!-- Élément racine -->
     <element name="cabinet" type="ci:Cabinet"/>
 
@@ -13,7 +14,7 @@
         <sequence>
             <element name="nom" type="string"/>
             <element name="adresse" type="ci:Adresse"/>
-            <element name="infirmiers" type="ci:Infirmier" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="infirmiers" type="ci:Infirmier" minOccurs="1" maxOccurs="unbounded"/>
             <element name="patients" type="ci:Patient" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
@@ -33,7 +34,7 @@
             <element name="id" type="string"/>
             <element name="nom" type="ci:Dénomination"/>
             <element name="prenom" type="ci:Dénomination"/>
-            <element name="photo" type="string" minOccurs="0"/>
+            <element name="photo" type="string" minOccurs="1"/>
         </sequence>
     </complexType>
 
@@ -90,7 +91,7 @@
 
     <simpleType name="Dénomination">
         <restriction base="string">
-            <pattern value="[A-Z][a-z]+"/>
+            <pattern value="[A-Za-zÀ-ÿ\-]+"/>
         </restriction>
     </simpleType>
 
