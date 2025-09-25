@@ -25,16 +25,6 @@ L’objectif est de construire progressivement une application capable de :
 * Organisation de l’arborescence du projet (`data/xml`, `data/xsd`).
 * Vérifier la **cohérence du schéma `actes.xsd`** avec l’exemple `ngap.xml` fourni par le professeur.
 
-
----
-
-## 🚧 En cours
-
-
-  ⚠️ Certains choix de types et contraintes sont encore à ajuster (ex. attributs `coef`, `clé`, références croisées `id`).
-* Compléter `cabinet.xml` avec les patients demandés dans l’énoncé (Orouge Elvire, Pien Oscare, Kapoëtla Xavier).
-* Vérification stricte des numéros de sécurité sociale (regex et cohérence avec la date de naissance).
-
 ---
 
 ## 📅 À faire
@@ -43,6 +33,7 @@ L’objectif est de construire progressivement une application capable de :
 
   * contraintes d’unicité (`xs:unique`) pour les identifiants infirmiers/patients,
   * contraintes d’existence (`xs:key` / `xs:keyref`) pour lier infirmiers ↔ patients ↔ visites.
+* Vérification stricte des numéros de sécurité sociale (regex et cohérence avec la date de naissance).
 * Écrire les transformations XSLT :
 
   * Page HTML des visites d’une infirmière,
